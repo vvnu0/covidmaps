@@ -45,7 +45,14 @@
 		      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon
 		      infowindow.open(map);
            	});
-            
+            var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+	    var mapOptions = {
+ 		 zoom: 8,
+ 		 center: myLatlng,
+ 		 mapTypeId: 'satellite'
+		};
+	    var map = new google.maps.Map(document.getElementById('map'),
+  	         mapOptions);
           }
 	</script>
 </div>

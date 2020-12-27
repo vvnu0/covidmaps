@@ -23,8 +23,8 @@
         	    }
      	        });
 
-	        map.data.loadGeoJson('states.json');
-		//map.data.loadGeoJson('county.json');    
+	        //map.data.loadGeoJson('states.json');
+		map.data.loadGeoJson('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-county-boundaries&q=&lang=en&facet=statefp&facet=countyfp&facet=name&facet=namelsad&facet=stusab&facet=state_name&timezone=America%2FLos_Angeles');    
 
 		map.data.setStyle({
 	           fillColor: 'blue',

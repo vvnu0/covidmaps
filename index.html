@@ -68,7 +68,7 @@
 		      let county_name = event.feature.getProperty("name");
 		      
 		      let cases = getCountyCas
-		      let html = 'County: ' + county_name + "New Cases: " + cases;
+		      let html = county_name + " County " + "New Cases: " + cases;
 		      infowindow.setContent(html); // show the html variable in the infowindow
 		      infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
 		      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon

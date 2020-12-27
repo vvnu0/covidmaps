@@ -11,28 +11,23 @@
 </style>
 <div id = "map" >
     <script >
-	  var map;
-	  var xmlhttp = new XMLHttpRequest();
-	  xmlhttp.onreadystatechange = function() {
-		  if (this.readyState == 4 && this.status == 200) {
-		      var myObj = JSON.parse(this.responseText);
-		      for (var i = 0; i < myObj.result.records.length; i++) {
-			  if (myObj.result.records[i].county == county_name) {
-			      case_info = myObj.result.records[0].totalcountconfirmed;
-			      alert(case_info);
-			  }
-		      }
-		  }
-	      };
+	var map;
+	var xmlhttp = new XMLHttpRequest();
 
-	  function getCountyCases(county_name) {
-	      let case_info = "";
-	      xmlhttp.open("GET", "https://data.ca.gov/api/3/action/datastore_search?resource_id=926fd08f-cc91-4828-af38-bd45de97f8c3&q=2020-12-25", true);
-	      xmlhttp.send();
-	  }
-
-	  //	    return case_info;
-	  //   }
+	function getCountyCases(county_name) {
+	    let case_info = "";
+	    xmlhttp.open("GET", "https://data.ca.gov/api/3/action/datastore_search?resource_id=926fd08f-cc91-4828-af38-bd45de97f8c3&q=2020-12-25", false);
+	    xmlhttp.send();
+	    if (xmlhttp.status === 200) {
+		var myObj = JSON.parse(xmlhttp.responseText);
+		for (var i = 0; i < myObj.result.records.length; i++) {
+		    if (myObj.result.records[i].county == county_name) {
+			case_info = myObj.result.records[0].totalcountconfirmed;
+		    }
+		}
+	    }
+            return case_info;
+	}
 
 	  function initMap() {
 

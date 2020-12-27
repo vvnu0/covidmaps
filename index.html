@@ -9,8 +9,8 @@
         padding: 0;
     }
 </style>
-<div id = "map" >
-    <script >
+<div id = "map" ></div>
+<script >
 	var map;
 	var xmlhttp = new XMLHttpRequest();
 
@@ -26,66 +26,65 @@
 		    }
 		}
 	    }
-            return case_info;
+	    return case_info;
 	}
 
-	  function initMap() {
+	function initMap() {
 
-	      map = new google.maps.Map(document.getElementById('map'), {
-		  zoom: 3,
-		  center: {
-		      lat: 39.8283,
-		      lng: -98.5795
-		  }
-	      });
+	    map = new google.maps.Map(document.getElementById('map'), {
+		zoom: 3,
+		center: {
+		    lat: 39.8283,
+		    lng: -98.5795
+		}
+	    });
 
-	      //map.data.loadGeoJson('states.json');
-	      //map.data.loadGeoJson('https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_500k.json');  
-	      //map.data.loadGeoJson('https://data.sfgov.org/resource/d2ef-idww.geojson'); 
-	      // map.data.loadGeoJson('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-county-boundaries&q=&lang=en&rows=11&facet=statefp&facet=countyfp&facet=name&facet=namelsad&facet=stusab&facet=state_name&timezone=America%2FLos_Angeles&format=geojson');
-	      map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
+	    //map.data.loadGeoJson('states.json');
+	    //map.data.loadGeoJson('https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_500k.json');  
+	    //map.data.loadGeoJson('https://data.sfgov.org/resource/d2ef-idww.geojson'); 
+	    // map.data.loadGeoJson('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-county-boundaries&q=&lang=en&rows=11&facet=statefp&facet=countyfp&facet=name&facet=namelsad&facet=stusab&facet=state_name&timezone=America%2FLos_Angeles&format=geojson');
+	    map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
 
-	      map.data.setStyle({
-		  fillColor: 'blue',
-		  strokeWeight: 1
-	      });
+	    map.data.setStyle({
+		fillColor: 'blue',
+		strokeWeight: 1
+	    });
 
-	      var infowindow = new google.maps.InfoWindow();
+	    var infowindow = new google.maps.InfoWindow();
 
-	      map.data.addListener('click', function(event) {
-		  //let state = event.feature.getProperty("NAME");
-		  //let html = 'State: ' + state; // combine state name with a label
-		  // 		      let cumulative_cases = event.feature.getProperty("cumulative_confirmed_cases");
-		  // 		      let new_cases = event.feature.getProperty("new_confirmed_cases");
-		  // 		      let area_type = event.feature.getProperty("area_type");
-		  // 		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
-		  let county_name = event.feature.getProperty("name");
-		  let cases = getCountyCases(county_name)
-		  let html = county_name + " County " + "New Cases: " + cases;
-		  infowindow.setContent(html); // show the html variable in the infowindow
-		  infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
-		  infowindow.setOptions({
-		      pixelOffset: new google.maps.Size(0, -30)
-		  }); // move the infowindow up slightly to the top of the marker icon
-		  infowindow.open(map);
-	      });
-	      /*function initMap() {
-		      const map = new google.maps.Map(document.getElementById("map"), {
-			  center: { lat: 36.964, lng: -122.015 },
-			      zoom: 18,
-			      mapTypeId: "satellite",
-		      });
-		      map.setTilt(45);
-		  }
-		    var myLatlng = new google.maps.LatLng(-34.397, 150.644);
-		  var mapOptions = {
-		   zoom: 8,
-		   center: myLatlng,
-		   mapTypeId: 'satellite'
-		  };
-		  var map = new google.maps.Map(document.getElementById('map'),
-		       mapOptions);*/
-	  }
-	</script>
-</div>
+	    map.data.addListener('click', function(event) {
+		//let state = event.feature.getProperty("NAME");
+		//let html = 'State: ' + state; // combine state name with a label
+		// 		      let cumulative_cases = event.feature.getProperty("cumulative_confirmed_cases");
+		// 		      let new_cases = event.feature.getProperty("new_confirmed_cases");
+		// 		      let area_type = event.feature.getProperty("area_type");
+		// 		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
+		let county_name = event.feature.getProperty("name");
+		let cases = getCountyCases(county_name)
+		let html = county_name + " County " + "New Cases: " + cases;
+		infowindow.setContent(html); // show the html variable in the infowindow
+		infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
+		infowindow.setOptions({
+		    pixelOffset: new google.maps.Size(0, -30)
+		}); // move the infowindow up slightly to the top of the marker icon
+		infowindow.open(map);
+	    });
+	    /*function initMap() {
+			      const map = new google.maps.Map(document.getElementById("map"), {
+				  center: { lat: 36.964, lng: -122.015 },
+				      zoom: 18,
+				      mapTypeId: "satellite",
+			      });
+			      map.setTilt(45);
+			  }
+			    var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+			  var mapOptions = {
+			   zoom: 8,
+			   center: myLatlng,
+			   mapTypeId: 'satellite'
+			  };
+			  var map = new google.maps.Map(document.getElementById('map'),
+			       mapOptions);*/
+	}	
+</script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8nBTEeEv055_bN-4Sp_R1zQ7ccoB0v_Q&callback=initMap" type="text/javascript"></script>

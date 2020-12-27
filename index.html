@@ -67,7 +67,7 @@
 // 		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
 		      let county_name = event.feature.getProperty("name");
 		      
-		      let cases = getCountyCas
+		      let cases = getCountyCas(county_name)
 		      let html = county_name + " County " + "New Cases: " + cases;
 		      infowindow.setContent(html); // show the html variable in the infowindow
 		      infowindow.setPosition(event.latLng); // anchor the infowindow at the marker

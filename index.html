@@ -25,7 +25,8 @@
 
 	        //map.data.loadGeoJson('states.json');
 		//map.data.loadGeoJson('https://eric.clst.org/assets/wiki/uploads/Stuff/gz_2010_us_050_00_500k.json');  
-		map.data.loadGeoJson('https://data.sfgov.org/resource/d2ef-idww.geojson'); 
+		//map.data.loadGeoJson('https://data.sfgov.org/resource/d2ef-idww.geojson'); 
+		  map.data.loadGeoJson('https://public.opendatasoft.com/api/records/1.0/search/?dataset=us-county-boundaries&q=&lang=en&rows=11&facet=statefp&facet=countyfp&facet=name&facet=namelsad&facet=stusab&facet=state_name&timezone=America%2FLos_Angeles&format=geojson');
 
 		map.data.setStyle({
 	           fillColor: 'blue',
@@ -37,10 +38,11 @@
                 map.data.addListener('click', function(event) {
 		      //let state = event.feature.getProperty("NAME");
                       //let html = 'State: ' + state; // combine state name with a label
-		      let cumulative_cases = event.feature.getProperty("cumulative_confirmed_cases");
-		      let new_cases = event.feature.getProperty("new_confirmed_cases");
-		      let area_type = event.feature.getProperty("area_type");
-		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
+// 		      let cumulative_cases = event.feature.getProperty("cumulative_confirmed_cases");
+// 		      let new_cases = event.feature.getProperty("new_confirmed_cases");
+// 		      let area_type = event.feature.getProperty("area_type");
+// 		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
+		      let html = 'Test';
 		      infowindow.setContent(html); // show the html variable in the infowindow
 		      infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
 		      infowindow.setOptions({pixelOffset: new google.maps.Size(0,-30)}); // move the infowindow up slightly to the top of the marker icon

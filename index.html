@@ -2,7 +2,10 @@
     #map {
         height: 50%;
     }
-    #container {
+    #caseContainer {
+        height: 100%;
+    }
+    #deathContainer {
         height: 100%;
     }
     #lineChartContainer {
@@ -48,24 +51,32 @@
 	function drawChart() {
 	    var myObj = getChartData();
 	    var jsonData = myObj.result.records;
-	    var gglData = [];
+	    var caseChartData = [];
 	    var lineData = [];
+	    var deathChartData = [];
 		
 	    if (jsonData.length > 0) {
-		var colHead = ['Date', 'New Confirmed', 'New Deaths'];
-		gglData.push(colHead);
-		  
+		var caseColHead = ['Date', 'New Confirmed'];
+		caseChartData.push(caseColHead);  //ggldata, colHead
+		 
+		var deathColHead = ['Date', 'New Deaths'];
+		deathChartData.push(deathColHead);
+		    
 		var lineColHead = ['Date', 'Total Confirmed', 'Total Deaths'];
    		lineData.push(lineColHead);
 		    
 		jsonData.forEach(function(row) {
 		    var rowDate = row['date'].split('T')[0];
 		   
-		    var gglRow = [];
-		    gglRow.push(rowDate);
-		    gglRow.push(parseInt(row['newcountconfirmed']));
-		    gglRow.push(parseInt(row['newcountdeaths']));
-		    gglData.push(gglRow);
+		    var caseChartRow = []; //gglrow
+		    caseChartRow.push(rowDate);
+		    caseChartRow.push(parseInt(row['newcountconfirmed']));
+		    caseChartData.push(caseChartRow);
+		    
+		    var deathChartRow = [];
+		    deathChartRow.push(rowDate);
+		    deathChartRow.push(parseInt(row['newcountdeaths']));
+		    deathChartRow.push(deathChartRow);
 			
 		    var lineRow =[];
        		    lineRow.push(rowDate);
@@ -75,12 +86,20 @@
 		});
 	    }
 
-	    var data = google.visualization.arrayToDataTable(gglData);
-	    var chart = new google.visualization.ColumnChart(document.getElementById("container"));
+	    var caseData = google.visualization.arrayToDataTable(caseChartData);
+	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));
 	    chart.draw(data, {
 		width: 1600,
 		height: 800,
-		title: "Last 25 Days of Covid Confirmed Cases and Deaths in " +  selectedCounty + " County"
+		title: "Last 25 Days of Covid Confirmed Cases in " +  selectedCounty + " County"
+	    });
+	
+	    var deatData = google.visualization.arrayToDataTable(deathChartData);
+	    var chart = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
+	    chart.draw(data, {
+		width: 1600,
+		height: 800,
+		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"
 	    });
 		
 	    var linedata1 = google.visualization.arrayToDataTable(lineData);

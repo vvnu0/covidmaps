@@ -116,6 +116,7 @@
 	    chart1.draw(deathData, {
 		width: 1600,
 		height: 800,
+		color: 'red', //color
 		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"
 	    });
 		
@@ -125,7 +126,7 @@
 	
 	    var lineDeathData1 = google.visualization.arrayToDataTable(lineDeathData);
  	    var lineDeathChart = new google.visualization.LineChart(document.getElementById("lineChartTotalDeath"));
-    	    lineDeathChart.draw(lineDeathData1, {width: 1600, height: 800, title: "Cumulative Covid-19 Caused Deaths in " +  selectedCounty + " County"});
+    	    lineDeathChart.draw(lineDeathData1, {width: 1600, height: 800, color: 'red', title: "Cumulative Covid-19 Caused Deaths in " +  selectedCounty + " County"}); //color
 	}
 	google.charts.setOnLoadCallback(drawChart); 
 </script>

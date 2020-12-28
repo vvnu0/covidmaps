@@ -44,6 +44,7 @@
 	    xmlhttp.send();
 	    return JSON.parse(xmlhttp.responseText);
 	}
+	
 	function drawChart() {
 	    var myObj = getChartData();
 	    var jsonData = myObj.result.records;
@@ -85,8 +86,6 @@
 	    var linedata1 = google.visualization.arrayToDataTable(lineData);
  	    var linechart = new google.visualization.LineChart(document.getElementById("lineChartContainer"));
     	    linechart.draw(linedata1, {width: 1600, height: 800});
-         }
-         google.charts.setOnLoadCallback(drawChart);
 	}
 	google.charts.setOnLoadCallback(drawChart); 
 </script>

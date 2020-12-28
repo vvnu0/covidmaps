@@ -89,15 +89,15 @@
 
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));
-	    chart.draw(caseChartData, {
+	    chart.draw(caseData, {
 		width: 1600,
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Cases in " +  selectedCounty + " County"
 	    });
 	
-	    var deatData = google.visualization.arrayToDataTable(deathChartData);
+	    var deathData = google.visualization.arrayToDataTable(deathChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
-	    chart.draw(deathChartData, {
+	    chart.draw(deathData, {
 		width: 1600,
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"

@@ -53,8 +53,8 @@
 	    var myObj = getChartData();
 	    var jsonData = myObj.result.records;
 	    var caseChartData = [];
-	    var lineData = [];
 	    var deathChartData = [];
+	    var lineData = [];
 		
 	    if (jsonData.length > 0) {
 		var caseColHead = ['Date', 'New Confirmed'];
@@ -89,7 +89,7 @@
 
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));
-	    chart.draw(data, {
+	    chart.draw(caseChartData, {
 		width: 1600,
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Cases in " +  selectedCounty + " County"
@@ -97,7 +97,7 @@
 	
 	    var deatData = google.visualization.arrayToDataTable(deathChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
-	    chart.draw(data, {
+	    chart.draw(deathChartData, {
 		width: 1600,
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"

@@ -124,7 +124,6 @@
 	    var lineCaseData1 = google.visualization.arrayToDataTable(lineCaseData);
  	    var lineCaseChart = new google.visualization.LineChart(document.getElementById("lineChartTotalCase"));
     	    lineCaseChart.draw(lineCaseData1, {width: 1600, height: 800, title: "Cumulative Covid-19 Cases in " +  selectedCounty + " County"});
-	}
 	
 	    var lineDeathData1 = google.visualization.arrayToDataTable(lineDeathData);
  	    var lineDeathChart = new google.visualization.LineChart(document.getElementById("lineChartTotalDeath"));

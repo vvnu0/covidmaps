@@ -10,6 +10,48 @@
     }
 </style>
 <div id = "map" ></div>
+<div id = "container"></div>
+
+<!--Below code for loading chart -->
+<script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+<script type = "text/javascript">
+   google.charts.load('current', {packages: ['corechart']});   
+</script>
+<script language = "JavaScript" >
+	var xmlhttp = new XMLHttpRequest();
+	var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE 'Alameda' AND \"date\" >='2020-12-01'"
+
+	xmlhttp.open("GET", query, false);
+	xmlhttp.send();
+	var myObj = JSON.parse(xmlhttp.responseText);
+
+	function drawChart() {
+	    var jsonData = myObj.result.records;
+	    var gglData = [];
+	    if (jsonData.length > 0) {
+		var colHead = ['Date', 'New Confirmed', 'New Deaths'];
+		gglData.push(colHead);
+		    
+		jsonData.forEach(function(row) {
+		    var gglRow = [];
+		    gglRow.push(row['date'].split('T')[0]);
+		    gglRow.push(parseInt(row['newcountconfirmed']));
+		    gglRow.push(parseInt(row['newcountdeaths']));
+		    gglData.push(gglRow);
+		});
+	    }
+
+	    var data = google.visualization.arrayToDataTable(gglData);
+	    var chart = new google.visualization.ColumnChart(document.getElementById("container"));
+	    chart.draw(data, {
+		width: 1600,
+		height: 800
+	    });
+	}
+	google.charts.setOnLoadCallback(drawChart); 
+</script>
+
+<!--Below script for loading map -->
 <script >
 	var map;
 	var xmlhttp = new XMLHttpRequest();

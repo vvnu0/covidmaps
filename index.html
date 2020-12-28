@@ -43,7 +43,7 @@
 	function getChartData() {
 	    var xmlhttp = new XMLHttpRequest();
 	    var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='" + getPastDate(25) + "'"
-
+	    alert(query)
 	    xmlhttp.open("GET", query, false);
 	    xmlhttp.send();
 	    return JSON.parse(xmlhttp.responseText);

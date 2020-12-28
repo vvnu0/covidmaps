@@ -77,7 +77,7 @@
 		    var deathChartRow = [];
 		    deathChartRow.push(rowDate);
 		    deathChartRow.push(parseInt(row['newcountdeaths']));
-		    deathChartRow.push(deathChartRow);
+		    deathChartData.push(deathChartRow);
 			
 		    var lineRow =[];
        		    lineRow.push(rowDate);
@@ -96,7 +96,6 @@
 	    });
 	
 	    var deathData = google.visualization.arrayToDataTable(deathChartData);
-	    alert(deathData);
 	    var chart1 = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
 	    chart1.draw(deathData, {
 		width: 1600,

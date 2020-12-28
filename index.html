@@ -72,17 +72,17 @@
 	var map;
 	var xmlhttp = new XMLHttpRequest();
 	
-	function getDate() {
+	/*function getDate() {
 	    currentDate = new Date();
 	    currentDate.setDate(currentDate.getDate() - 1);
 	    const offset = currentDate.getTimezoneOffset();
 	    currentDate = new Date(currentDate.getTime() - (offset*60*1000));
 	    return currentDate.toISOString().split('T')[0];
-	}
+	}*/
 
 	function getCountyCases(county_name) {
 	    let case_info = "";
-	    xmlhttp.open("GET", "https://data.ca.gov/api/3/action/datastore_search?resource_id=926fd08f-cc91-4828-af38-bd45de97f8c3&q=" + getDate(), false);
+	    xmlhttp.open("GET", "https://data.ca.gov/api/3/action/datastore_search?resource_id=926fd08f-cc91-4828-af38-bd45de97f8c3&q=" + getPastDate(1), false);
 	    xmlhttp.send();
 	    if (xmlhttp.status === 200) {
 		var myObj = JSON.parse(xmlhttp.responseText);

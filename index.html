@@ -3,7 +3,10 @@
         height: 50%;
     }
     #container {
-        height: 50%;
+        height: 25%;
+    }
+    #lineChartContainer {
+	height: 25%;
     }
     /* Optional: Makes the sample page fill the window. */
     html, body {
@@ -14,6 +17,7 @@
 </style>
 <div id = "map" ></div>
 <div id = "container"></div>
+<div id = "lineChartContainer"></div>
 
 <!--Below code for loading chart -->
 <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
@@ -44,16 +48,29 @@
 	    var myObj = getChartData();
 	    var jsonData = myObj.result.records;
 	    var gglData = [];
+	    var lineData = [];
+		
 	    if (jsonData.length > 0) {
 		var colHead = ['Date', 'New Confirmed', 'New Deaths'];
 		gglData.push(colHead);
+		  
+		var lineColHead = ['Date', 'Total Confirmed', 'Total Deaths'];
+   		lineData.push(lineColHead);
 		    
 		jsonData.forEach(function(row) {
+		    var rowDate = row['date'].split('T')[0];
+		   
 		    var gglRow = [];
-		    gglRow.push(row['date'].split('T')[0]);
+		    gglRow.push(rowDate);
 		    gglRow.push(parseInt(row['newcountconfirmed']));
 		    gglRow.push(parseInt(row['newcountdeaths']));
 		    gglData.push(gglRow);
+			
+		    var lineRow =[];
+       		    lineRow.push(rowDate);
+       		    lineRow.push(parseInt(row['totalcountconfirmed'])); //change total
+      		    lineRow.push(parseInt(row['totalcountdeaths']));  //change to toal
+      		    lineData.push(lineRow);
 		});
 	    }
 
@@ -64,6 +81,12 @@
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Cases and Deaths in " +  selectedCounty + " County"
 	    });
+		
+	    var linedata1 = google.visualization.arrayToDataTable(lineData);
+ 	    var linechart = new google.visualization.LineChart(document.getElementById("lineChartContainer"));
+    	    linechart.draw(linedata1, {width: 1600, height: 800});
+         }
+         google.charts.setOnLoadCallback(drawChart);
 	}
 	google.charts.setOnLoadCallback(drawChart); 
 </script>

@@ -21,14 +21,17 @@
    google.charts.load('current', {packages: ['corechart']});   
 </script>
 <script language = "JavaScript" >
-	var xmlhttp = new XMLHttpRequest();
-	var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE 'Alameda' AND \"date\" >='2020-12-01'"
+	let selectedCounty = "Alameda";
+	function getChartData() {
+	    var xmlhttp = new XMLHttpRequest();
+	    var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE " + selectedCounty + " AND \"date\" >='2020-12-01'"
 
-	xmlhttp.open("GET", query, false);
-	xmlhttp.send();
-	var myObj = JSON.parse(xmlhttp.responseText);
-
+	    xmlhttp.open("GET", query, false);
+	    xmlhttp.send();
+	    return JSON.parse(xmlhttp.responseText);
+	}
 	function drawChart() {
+	    var myObj = getChartData();
 	    var jsonData = myObj.result.records;
 	    var gglData = [];
 	    if (jsonData.length > 0) {
@@ -113,6 +116,8 @@
 		// 		      let area_type = event.feature.getProperty("area_type");
 		// 		      let html = 'Area Type: ' + area_type + ' Cumulative Cases: ' + cumulative_cases + ' New Cases: ' + new_cases; // combine state name with a label
 		let county_name = event.feature.getProperty("name");
+		selectedCounty = county_name;
+		drawChart();
 		let cases = getCountyCases(county_name)
 		let html = county_name + " County " + "New Cases: " + cases;
 		infowindow.setContent(html); // show the html variable in the infowindow

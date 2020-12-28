@@ -22,9 +22,19 @@
 </script>
 <script language = "JavaScript" >
 	let selectedCounty = "Alameda";
+	
+	function getPastDate(days) {
+	    currentDate = new Date();
+	    currentDate.setDate(currentDate.getDate() - days);
+	    const offset = currentDate.getTimezoneOffset();
+	    currentDate = new Date(currentDate.getTime() - (offset*60*1000));
+	    return currentDate.toISOString().split('T')[0];
+	}
+	
+	
 	function getChartData() {
 	    var xmlhttp = new XMLHttpRequest();
-	    var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='2020-12-01'"
+	    var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='" + getPastDate(25) + "'"
 
 	    xmlhttp.open("GET", query, false);
 	    xmlhttp.send();

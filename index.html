@@ -93,14 +93,14 @@
 			
 		    var lineCaseRow =[];
        		    lineCaseRow.push(rowDate);
-       		    lineCaseRow.push(totalConfirmed<0?:totalConfirmed); //change total
-      		    lineCaseRow.push(totalDeaths<0?:totalDeaths);  //change to toal
+       		    lineCaseRow.push(totalConfirmed<0?0:totalConfirmed); //change total
+      		    lineCaseRow.push(totalDeaths<0?0:totalDeaths);  //change to toal
       		    lineCaseData.push(lineCaseRow);
 			
 		    var lineDeathRow =[];
        		    lineDeathRow.push(rowDate);
-       		    lineDeathRow.push(totalConfirmed<0?:totalConfirmed); //change total
-      		    lineDeathRow.push(totalDeaths<0?:totalDeaths);  //change to toal
+       		    lineDeathRow.push(totalConfirmed<0?0:totalConfirmed); //change total
+      		    lineDeathRow.push(totalDeaths<0?0:totalDeaths);  //change to toal
       		    lineDeathData.push(lineDeathRow);
 		});
 	    }

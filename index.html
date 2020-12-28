@@ -96,8 +96,8 @@
 	    });
 	
 	    var deathData = google.visualization.arrayToDataTable(deathChartData);
-	    var chart = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
-	    chart.draw(deathData, {
+	    var chart1 = new google.visualization.ColumnChart(document.getElementById("deathContainer")); //container
+	    chart1.draw(deathData, {
 		width: 1600,
 		height: 800,
 		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"

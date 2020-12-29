@@ -34,7 +34,7 @@
 <!--Below code for loading chart -->
 <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
 <script type = "text/javascript">
-   google.charts.load('current', {packages: ['corechart']});   
+   google.charts.load('current', {packages: ['corechart','table']});   
 </script>
 <script language = "JavaScript" >
 	let selectedCounty = "Alameda";
@@ -128,12 +128,12 @@
 
 	    var dataTable = google.visualization.arrayToDataTable(tableData);
 		
-	    /*var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
+	    var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
 	    tableChart.draw(dataTable, {
 		    showRowNumber: true, 
 		    width: '100%', 
 		    height: '100%',
-	    	    title: "Covid case status in " + selectedCounty + " County as of yesterday"}); */
+	    	    title: "Covid case status in " + selectedCounty + " County as of yesterday"});
 		
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));

@@ -69,10 +69,6 @@
 	    var tableDay = getPastDate(1);
 	    	
 	    if (jsonData.length > 0) {
-		//tableData.addColumn('number', 'Total Confirmed Cases'); //table
-		//tableData.addColumn('number', 'Total Deaths');		//table
-		//tableData.addColumn('number', 'New Confirmed Cases');	//table
-		//tableData.addColumn('number', 'New Deaths');		//table
 		var tableColHead = ['Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
 		tableData.push(tableColHead);
 		    
@@ -131,9 +127,7 @@
 	    var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
 	    tableChart.draw(dataTable, {
 		    showRowNumber: true, 
-		    width: '100%', 
-		    height: '100%',
-	    	    title: "Covid case status in " + selectedCounty + " County as of yesterday"});
+		    title: "Covid case status in " + selectedCounty + " County as of yesterday"});
 		
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));

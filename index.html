@@ -64,15 +64,17 @@
 	    var deathChartData = [];
 	    var lineCaseData = [];
 	    var lineDeathData = [];
+	    var tableData = [];
 	
-	    //var tableDay = getPastDate(1); //table
-	    //var tableData = new google.visualization.drawChart(); //table
-		
+	    var tableDay = getPastDate(1);
+	    	
 	    if (jsonData.length > 0) {
 		//tableData.addColumn('number', 'Total Confirmed Cases'); //table
 		//tableData.addColumn('number', 'Total Deaths');		//table
 		//tableData.addColumn('number', 'New Confirmed Cases');	//table
 		//tableData.addColumn('number', 'New Deaths');		//table
+		var tableColHead = ['Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
+		tableData.push(tableColHead);
 		    
 		var caseColHead = ['Date', 'New Confirmed'];
 		caseChartData.push(caseColHead); 
@@ -113,20 +115,24 @@
       		    lineDeathRow.push(totalDeaths<0?0:totalDeaths);
       		    lineDeathData.push(lineDeathRow);
 		    
-		    /*if (tableDay == rowDate) {   //table
-			    var tableRow = [];
-			    tableRow.push(totalConfirmed<0?0:totalConfirmed);
-			    tableRow.push(totalDeaths<0?0:totalDeaths);
-			    tableRow.push(newConfirmed<0?0:newConfirmed);
-			    tableRow.push(newDeaths<0?0:newDeaths);
-			    tableData.push(tableRow);
-		    }*/
+		    if (tableDay == rowDate) {   //table
+			var tableRow = [];
+			tableRow.push(totalConfirmed<0?0:totalConfirmed);
+			tableRow.push(totalDeaths<0?0:totalDeaths);
+			tableRow.push(newConfirmed<0?0:newConfirmed);
+			tableRow.push(newDeaths<0?0:newDeaths);
+			tableData.push(tableRow);
+		    }
 		});
 	    }
 
-	    //var dataTable = google.visualization.arrayToDataTable(tableData);
-	    //var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
-	    //tableChart.draw(dataTable, {showRowNumber: true, width: '100%', height: '100%'}); //table
+	    var dataTable = google.visualization.arrayToDataTable(tableData);
+	    var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
+	    tableChart.draw(dataTable, {
+		    showRowNumber: true, 
+		    width: '100%', 
+		    height: '100%',
+	    	    title: "Covid case status in " + selectedCounty + " County as of yesterday"}); //table
 		
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));

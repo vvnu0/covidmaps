@@ -124,8 +124,9 @@
 		});
 	    }
 
-	    var tablesData = new google.visualization.Table(document.getElementById('tableContainer'));	//table
-	    tablesData.draw(data, {showRowNumber: true, width: '100%', height: '100%'}); //table
+	    var dataTable = google.visualization.arrayToDataTable(tableData);
+	    var tableChart = new google.visualization.Table(document.getElementById('tableContainer'));	//table
+	    tableChart.draw(dataTable, {showRowNumber: true, width: '100%', height: '100%'}); //table
 		
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));

@@ -108,9 +108,11 @@
 	    });	
 	    document.getElementById('new_deaths_title').innerText = new_deaths_title_text;
 		
+	     var total_cases_title_text = "Total Cases in " +  selectedCounty + " County";
 	    var lineCaseData1 = google.visualization.arrayToDataTable(lineCaseData);
  	    var lineCaseChart = new google.visualization.LineChart(document.getElementById("lineChartTotalCase"));
-    	    lineCaseChart.draw(lineCaseData1, {width: 1600, height: 800, title: "Cumulative Covid-19 Cases in " +  selectedCounty + " County"});
+    	    lineCaseChart.draw(lineCaseData1, {height: 600});
+	    document.getElementById('total_cases_title').innerText = total_cases_title_text;
 	
 	    var lineDeathData1 = google.visualization.arrayToDataTable(lineDeathData);
  	    var lineDeathChart = new google.visualization.LineChart(document.getElementById("lineChartTotalDeath"));

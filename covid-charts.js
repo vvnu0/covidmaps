@@ -114,7 +114,9 @@
     	    lineCaseChart.draw(lineCaseData1, {height: 600});
 	    document.getElementById('total_cases_title').innerText = total_cases_title_text;
 	
+	     var total_deaths_title_text = "Total Deaths in " + selectedCounty + " County";
 	    var lineDeathData1 = google.visualization.arrayToDataTable(lineDeathData);
  	    var lineDeathChart = new google.visualization.LineChart(document.getElementById("lineChartTotalDeath"));
-    	    lineDeathChart.draw(lineDeathData1, {width: 1600, height: 800, colors: ['#a52714'], title: "Cumulative Covid-19 Caused Deaths in " +  selectedCounty + " County"}); 
+    	    lineDeathChart.draw(lineDeathData1, {height: 600, colors: ['#a52714']}); 
+	    document.getElementById('total_deaths_title').innerText = total_deaths_title_text
 	}

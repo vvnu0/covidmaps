@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>California Covid-19 Data Tracker</title>
+
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+    <link rel="stylesheet" href="Page-1.css" media="screen">
+    <link rel="stylesheet" href="covid-styles.css" media="screen">
+
+    <!--Scripts for my changes -->
+    <script type = "text/javascript" src = "covid-maps.js"></script>
+    <script type = "text/javascript" src = "covid-charts.js"></script>
+
+    <!--Scripts for google charts -->
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+    <script type = "text/javascript">
+       google.charts.load('current', {packages: ['corechart','table']});
+       google.charts.setOnLoadCallback(drawChart);
+    </script>
+
+    <!-- Script for google maps -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8nBTEeEv055_bN-4Sp_R1zQ7ccoB0v_Q&callback=initMap" type="text/javascript"></script>
+
+  </head>
+  <body class="u-body">
+
+    <header class="u-clearfix u-header u-header" id="sec-80c7">
+        <div class="u-clearfix u-sheet u-sheet-1">
+          <br>
+          <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
+          <br>
+        </div>
+    </header>
+
+    <!-- This section is for top part/description about the website -->
+    <section class="u-clearfix u-grey-5 u-section-1" id="sec-5b26">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h3 class="u-text u-text-1">Covid Information Base, write header here</h3>
+        <p class="u-text u-text-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim 
+veniam, quis nostrud exercitation nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate 
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+mollit anim id est laborum. 
+        </p>
+      </div>
+      <div id = "tableContainer"></div>
+    </section>
+
+    <!-- This is where the google map shows up -->
+    <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-2" id="sec-be10">
+      <div class="u-expanded u-grey-light-2 u-map">
+        <div class="embed-responsive" id = "map">
+        </div>
+      </div>
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+
+    <!-- This is where all the graphs and tables show up -->
+    <section class="u-align-center u-clearfix u-grey-10 u-section-3" id="carousel_c63b">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+
+        <!-- Header before the charts listing -->
+        <h1 class="u-custom-font u-font-montserrat u-text u-text-default u-text-1">Details About Selection</h1>
+
+        <!-- This is where all charts start -->
+        <div class="u-blog u-expanded-width u-repeater u-repeater-1">
+
+          <!-- This is for chart1 -->
+          <div class="u-blog-post u-container-style u-repeater-item u-white u-repeater-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <div id = "caseContainer"></div>
+              <div class="u-align-center u-container-style u-expanded-width u-group u-group-1">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-blog-control u-custom-font u-font-montserrat u-text u-text-2">
+                    <a class="u-post-header-link" href="blog/post.html">Post 1 Headline</a>
+                  </h2>
+                  <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1">
+                    <span class="u-meta-date u-meta-icon">Mon Dec 28 2020</span>
+                  </div>
+                  <div class="u-blog-control u-post-content u-text u-text-3">Sample small text. Lorem ipsum dolor sit amet.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- This is for chart2 -->
+          <div class="u-blog-post u-container-style u-repeater-item u-white u-repeater-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <div id = "deathContainer"></div>
+              <div class="u-align-center u-container-style u-expanded-width u-group u-group-1">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-blog-control u-custom-font u-font-montserrat u-text u-text-2">
+                    <a class="u-post-header-link" href="blog/post.html">Post 1 Headline</a>
+                  </h2>
+                  <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1">
+                    <span class="u-meta-date u-meta-icon">Mon Dec 28 2020</span>
+                  </div>
+                  <div class="u-blog-control u-post-content u-text u-text-3">Sample small text. Lorem ipsum dolor sit amet.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- chart3 -->
+          <div class="u-blog-post u-container-style u-repeater-item u-white u-repeater-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <div id = "lineChartTotalCase"></div>
+              <div class="u-align-center u-container-style u-expanded-width u-group u-group-1">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-blog-control u-custom-font u-font-montserrat u-text u-text-2">
+                    <a class="u-post-header-link" href="blog/post.html">Post 1 Headline</a>
+                  </h2>
+                  <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1">
+                    <span class="u-meta-date u-meta-icon">Mon Dec 28 2020</span>
+                  </div>
+                  <div class="u-blog-control u-post-content u-text u-text-3">Sample small text. Lorem ipsum dolor sit amet.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart 4 -->
+          <div class="u-blog-post u-container-style u-repeater-item u-white u-repeater-item-1">
+            <div class="u-container-layout u-similar-container u-container-layout-1">
+              <div id = "lineChartTotalDeath"></div>
+              <div class="u-align-center u-container-style u-expanded-width u-group u-group-1">
+                <div class="u-container-layout u-container-layout-2">
+                  <h2 class="u-blog-control u-custom-font u-font-montserrat u-text u-text-2">
+                    <a class="u-post-header-link" href="blog/post.html">Post 1 Headline</a>
+                  </h2>
+                  <div class="u-blog-control u-metadata u-text-grey-30 u-metadata-1">
+                    <span class="u-meta-date u-meta-icon">Mon Dec 28 2020</span>
+                  </div>
+                  <div class="u-blog-control u-post-content u-text u-text-3">Sample small text. Lorem ipsum dolor sit amet.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- All graphs complete by now. Proceed with footer -->
+
+      </div>
+    </section>
+    <!-- Everything is now done -->
+
+    <!-- Footer message -->
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8032">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">
+            Sample text. Click to select the text box. Click again or double click to start editing the text.
+        </p>
+      </div>
+    </footer>
+    <!-- Footer done -->
+
+  </body>
+</html>

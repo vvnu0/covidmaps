@@ -63,7 +63,7 @@
 		
 	    if (jsonData.length > 0) {
 		var caseColHead = ['Date', 'New Confirmed'];
-		caseChartData.push(caseColHead);  //ggldata, colHead
+		caseChartData.push(caseColHead); 
 		 
 		var deathColHead = ['Date', 'New Deaths'];
 		deathChartData.push(deathColHead);
@@ -81,7 +81,7 @@
 		    var totalConfirmed = parseInt(row['totalcountconfirmed']);
 		    var totalDeaths = parseInt(row['totalcountdeaths']);
 		   
-		    var caseChartRow = []; //gglrow
+		    var caseChartRow = []; 
 		    caseChartRow.push(rowDate);
 		    caseChartRow.push(newConfirmed<0?0:newConfirmed);
 		    caseChartData.push(caseChartRow);
@@ -116,7 +116,7 @@
 	    chart1.draw(deathData, {
 		width: 1600,
 		height: 800,
-		colors: ['#a52714'], //color
+		colors: ['#a52714'],
 		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"
 	    });
 		
@@ -126,7 +126,7 @@
 	
 	    var lineDeathData1 = google.visualization.arrayToDataTable(lineDeathData);
  	    var lineDeathChart = new google.visualization.LineChart(document.getElementById("lineChartTotalDeath"));
-    	    lineDeathChart.draw(lineDeathData1, {width: 1600, height: 800, colors: ['#a52714'], title: "Cumulative Covid-19 Caused Deaths in " +  selectedCounty + " County"}); //color
+    	    lineDeathChart.draw(lineDeathData1, {width: 1600, height: 800, colors: ['#a52714'], title: "Cumulative Covid-19 Caused Deaths in " +  selectedCounty + " County"}); 
 	}
 	google.charts.setOnLoadCallback(drawChart); 
 </script>
@@ -201,7 +201,7 @@
 		}); // move the infowindow up slightly to the top of the marker icon
 		infowindow.open(map);
 	    });
-	    /*function initMap() {
+	    function initMap() {
 			      const map = new google.maps.Map(document.getElementById("map"), {
 				  center: { lat: 36.964, lng: -122.015 },
 				      zoom: 18,
@@ -209,7 +209,7 @@
 			      });
 			      map.setTilt(45);
 			  }
-			    var myLatlng = new google.maps.LatLng(-34.397, 150.644);
+			   /* var myLatlng = new google.maps.LatLng(-34.397, 150.644);
 			  var mapOptions = {
 			   zoom: 8,
 			   center: myLatlng,

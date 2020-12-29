@@ -17417,7 +17417,7 @@ a.pswp__share--download:hover {
 }
 .u-repeater {
   display: grid;
-  grid-template-columns: repeat(3, 33.33333333%);
+  grid-template-columns: repeat(1, 100%);
 }
 .u-repeater-item {
   display: flex;

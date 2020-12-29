@@ -95,9 +95,7 @@
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));
 	    chart.draw(caseData, {
-		width: 1600,
-		height: 800
-		//title:
+		height: 600
 	    });
 	    document.getElementById('new_cases_title').innerText = new_cases_title_text;
 	

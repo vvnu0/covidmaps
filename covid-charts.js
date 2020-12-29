@@ -91,22 +91,22 @@
 		    title: "Covid case status in " + selectedCounty + " County as of yesterday"});
 
 		//Newly confirmed cases ColumnChart
-		var new_cases_title_text = "Confirmed Cases in " +  selectedCounty + " County";
+	     var new_cases_title_text = "Confirmed Cases in " +  selectedCounty + " County";
 	    var caseData = google.visualization.arrayToDataTable(caseChartData);
 	    var chart = new google.visualization.ColumnChart(document.getElementById("caseContainer"));
 	    chart.draw(caseData, {
 		height: 600
 	    });
 	    document.getElementById('new_cases_title').innerText = new_cases_title_text;
-	
+		
+	     var new_deaths_title_text = "Confirmed Deaths in " +  selectedCounty + " County";
 	    var deathData = google.visualization.arrayToDataTable(deathChartData);
 	    var chart1 = new google.visualization.ColumnChart(document.getElementById("deathContainer")); 
 	    chart1.draw(deathData, {
-		width: 1600,
-		height: 800,
+		height: 600,
 		colors: ['#a52714'],
-		title: "Last 25 Days of Covid Confirmed Deaths in " +  selectedCounty + " County"
 	    });	
+	    document.getElementById('new_deaths_title').innerText = new_deaths_title_text;
 		
 	    var lineCaseData1 = google.visualization.arrayToDataTable(lineCaseData);
  	    var lineCaseChart = new google.visualization.LineChart(document.getElementById("lineChartTotalCase"));

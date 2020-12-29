@@ -65,14 +65,14 @@
 	    var lineCaseData = [];
 	    var lineDeathData = [];
 	
-	    var tableDay = getPastDate(1); //table
-	    var tableData = new google.visualization.drawChart(); //table
+	    //var tableDay = getPastDate(1); //table
+	    //var tableData = new google.visualization.drawChart(); //table
 		
 	    if (jsonData.length > 0) {
-		tableData.addColumn('number', 'Total Confirmed Cases'); //table
-		tableData.addColumn('number', 'Total Deaths');		//table
-		tableData.addColumn('number', 'New Confirmed Cases');	//table
-		tableData.addColumn('number', 'New Deaths');		//table
+		//tableData.addColumn('number', 'Total Confirmed Cases'); //table
+		//tableData.addColumn('number', 'Total Deaths');		//table
+		//tableData.addColumn('number', 'New Confirmed Cases');	//table
+		//tableData.addColumn('number', 'New Deaths');		//table
 		    
 		var caseColHead = ['Date', 'New Confirmed'];
 		caseChartData.push(caseColHead); 
@@ -113,14 +113,14 @@
       		    lineDeathRow.push(totalDeaths<0?0:totalDeaths);
       		    lineDeathData.push(lineDeathRow);
 		    
-		    if (tableDay == rowDate) {   //table
+		    /*if (tableDay == rowDate) {   //table
 			    var tableRow = [];
 			    tableRow.push(totalConfirmed<0?0:totalConfirmed);
 			    tableRow.push(totalDeaths<0?0:totalDeaths);
 			    tableRow.push(newConfirmed<0?0:newConfirmed);
 			    tableRow.push(newDeaths<0?0:newDeaths);
 			    tableData.push(tableRow);
-		    }
+		    }*/
 		});
 	    }
 

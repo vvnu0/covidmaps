@@ -30,7 +30,7 @@
 	    var tableDay = getPastDate(1);
 	    	
 	    if (jsonData.length > 0) {
-		var tableColHead = ['Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
+		var tableColHead = ['County', 'Date', 'Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
 		tableData.push(tableColHead);
 		    
 		var caseColHead = ['Date', 'New Confirmed'];
@@ -74,6 +74,8 @@
 		    
 		    if (tableDay == rowDate) {   //table
 			var tableRow = [];
+			tableRow.push(selectedCounty);
+			tableRow.push(rowDate); 
 			tableRow.push(totalConfirmed<0?0:totalConfirmed);
 			tableRow.push(totalDeaths<0?0:totalDeaths);
 			tableRow.push(newConfirmed<0?0:newConfirmed);

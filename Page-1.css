@@ -362,3 +362,21 @@
     margin-left: 146px;
   }
 }
+
+.floating > * {
+    float:left;
+    margin-right:5px;
+}
+.clearfix {
+    *zoom:1 /* for IE */
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}

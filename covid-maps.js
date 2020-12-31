@@ -17,8 +17,8 @@
 	}
 
 	function initMap() {
-	    map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
 	    map = new google.maps.Map(document.getElementById('map'), {
+	        map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
 		zoom: 6,
 		center: {
 		    lat: 37.58157,

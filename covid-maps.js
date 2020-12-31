@@ -25,7 +25,7 @@
 		}
 	    });
 
-	map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
+	    map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
 
 	    map.data.setStyle({
 		fillColor: 'blue',

@@ -17,14 +17,13 @@
 	}
 
 	function initMap() {
-	    map = new google.maps.Map(document.getElementById('map'),
+	    map = new google.maps.Map(document.getElementById('map'), {
 		zoom: 6,
 		center: {
 		    lat: 37.58157,
 		    lng: -121.4944
 		}
 	    });
-
 	    map.data.loadGeoJson('https://raw.githubusercontent.com/codeforamerica/click_that_hood/master/public/data/california-counties.geojson');
 
 	    map.data.setStyle({

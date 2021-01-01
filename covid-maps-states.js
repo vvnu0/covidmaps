@@ -15,6 +15,23 @@
               fillColor: 'green',
               strokeWeight: 1
             });
+		
+	    var stateinfowindow = new google.maps.InfoWindow();
+
+	    stateMap.data.addListener('click', function(event) {
+		let states_code = event.feature.getProperty("STUSPS");
+		let state_name = event.feature.getProperty("name");
+		selectedState = states_code;
+		drawChart();
+		let mycases = getStateChartData(states_code)
+		let html = "State :" + states_name + "New Cases: " + mycases;
+		infowindow.setContent(html); // show the html variable in the infowindow
+		infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
+		infowindow.setOptions({
+		    pixelOffset: new google.maps.Size(0, -30)
+		}); 
+		infowindow.open(stateMap);
+	    })
         }
 
         function callMe() {
@@ -29,15 +46,22 @@
 	    currentDate = new Date(currentDate.getTime() - (offset*60*1000));
 	    return currentDate.toISOString().split('T')[0];
 	}
+
+	function getStateChartData(stateCode) {
+	    var baseQuery = "https://data.cdc.gov/resource/9mfq-cb36.json?submission_date=" + getPastDate(1) + "T00:00:00.000";
+	    var xmlhttp = new XMLHttpRequest();
+	    if (stateCode && stateCode !== "") {
+		xmlhttp.open("GET", baseQuery+"&state="+stateCode, false);     
+	    } else {
+		xmlhttp.open("GET", baseQuery, false);
+	    }
+	    xmlhttp.send();
+	    return JSON.parse(xmlhttp.responseText);
+	}
 	
 
 	function getChartData() {
-	    var xmlhttp = new XMLHttpRequest();
-	    var query = "https://data.cdc.gov/resource/9mfq-cb36.json?submission_date=" + getPastDate(1) + "T00:00:00.000"
-
-	    xmlhttp.open("GET", query, false);
-	    xmlhttp.send();
-	    return JSON.parse(xmlhttp.responseText);
+	    return getStateChartData('');
 	}
 	
 	function drawChart() {

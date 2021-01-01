@@ -10,6 +10,11 @@
 		}
 	    });
 	    stateMap.data.loadGeoJson('https://raw.githubusercontent.com/nairvishnumail/covidmaps/main/states.json');
+		
+            map.data.setStyle({
+              fillColor: 'green',
+              strokeWeight: 1
+            });
         }
 
         function callMe() {

@@ -1,6 +1,15 @@
 	let selectedState = "CA";
-
+	
+	var stateMap;
         function initStateMap() {
+		stateMap = new google.maps.Map(document.getElementById('stateMap'), {
+		zoom: 5,
+		center: {
+		    lat: 37.0902,
+		    lng: -95.7129
+		}
+	    });
+	    map.data.loadGeoJson('https://raw.githubusercontent.com/nairvishnumail/covidmaps/main/states.json');
         }
 
         function callMe() {

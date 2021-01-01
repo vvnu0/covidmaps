@@ -104,7 +104,7 @@
 	    var case_data = google.visualization.arrayToDataTable(stateCaseData);
 	    var caseChart = new google.visualization.ColumnChart(document.getElementById("stateCase"));
 	    caseChart.draw(case_data, {
-		width: 1600,
+		width: 1500,
 		height: 800,
 		title: "State by State Comparison of New Cases",
                 hAxis:{
@@ -119,7 +119,7 @@
 	    var deathData = google.visualization.arrayToDataTable(stateDeathData);
 	    var deathChart = new google.visualization.ColumnChart(document.getElementById("stateDeath")); 
 	    deathChart.draw(deathData, {
-		width: 1600,
+		width: 1500,
 		height: 800,
 		colors: ['#a52714'],
 		title: "State by State Comparison of New Cases",
@@ -135,7 +135,7 @@
 	    var totalCaseData = google.visualization.arrayToDataTable(stateTotalCaseData);
  	    var totalCaseChart = new google.visualization.ColumnChart(document.getElementById("stateTotalCase"));
     	    totalCaseChart.draw(totalCaseData, {
-		width: 1600,
+		width: 1500,
 		height: 800,
 		title: "State by State Comparison of Total Cases",
                 hAxis:{
@@ -150,7 +150,7 @@
 	    var totalDeathData = google.visualization.arrayToDataTable(stateTotalDeathData);
  	    var totalDeathChart = new google.visualization.ColumnChart(document.getElementById("stateTotalDeath"));
     	    totalDeathChart.draw(totalDeathData, {
-		width: 1600,
+		width: 1500,
 		height: 800,
 		colors: ['#a52714'],
 		title: "State by State Comparison of Total Cases",

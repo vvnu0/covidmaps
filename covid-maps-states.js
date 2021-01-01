@@ -3,7 +3,7 @@
 	var stateMap;
         function initStateMap() {
 		stateMap = new google.maps.Map(document.getElementById('stateMap'), {
-		zoom: 5,
+		zoom: 4,
 		center: {
 		    lat: 37.0902,
 		    lng: -95.7129

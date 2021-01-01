@@ -9,7 +9,7 @@
 		    lng: -95.7129
 		}
 	    });
-	    map.data.loadGeoJson('https://raw.githubusercontent.com/nairvishnumail/covidmaps/main/states.json');
+	    stateMap.data.loadGeoJson('https://raw.githubusercontent.com/nairvishnumail/covidmaps/main/states.json');
         }
 
         function callMe() {

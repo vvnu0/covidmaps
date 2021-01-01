@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="covid-styles.css" media="screen">
+
+    <!-- My scripts -->
+    <script type = "text/javascript" src = "covid-maps-helper.js"></script>
+    <script type = "text/javascript" src = "covid-maps-states.js"></script>
+
+    <!--Scripts for google charts -->
+    <script type = "text/javascript" src = "https://www.gstatic.com/charts/loader.js"></script>
+    <script type = "text/javascript">
+       google.charts.load('current', {packages: ['corechart','table']});
+       google.charts.setOnLoadCallback(drawChart); 
+    </script>
+
+    <!-- Script for google maps 
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8nBTEeEv055_bN-4Sp_R1zQ7ccoB0v_Q&callback=initStateMap" type="text/javascript"></script>
+    -->
+
+    <!-- 
+    For adding google maps for later
+    <script type="text/javascript" >
+
+    </script> 
+    -->
+    
+
+  </head>
+  <body class="u-body">
+
+    <!-- Side Navigation -->
+    <div class="sidenav">
+      <a href="#stateMap">State Map</a>
+      <a href="#stateCase">Case Comparison</a>
+      <a href="#stateDeath">Death Comparison</a>
+      <a href="#stateTotalCase">Total Cases</a>
+      <a href="#stateTotalDeath">Total Death</a>
+    </div>
+ 
+    <header class="u-clearfix u-header u-header" id="sec-80c7">
+        <div class="u-clearfix u-sheet u-sheet-1">
+          <br>
+          <!--img src="Logo.png" class="u-logo-image u-logo-image-1"-->
+          <br>
+          <br>
+        </div>
+    </header>
+
+    <!-- This section is for top part/description about the website -->
+    <section class="u-clearfix u-grey-5 u-section-1" id="sec-5b26">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h3 class="u-text u-text-1">States Covid-19 Data Tracker</h3>
+        <p class="u-text u-text-2">
+            Please write something here. 
+        </p>
+      </div>
+      
+      <div align="center">
+          <!--need an image-->
+      </div> 
+    </section>
+
+    <!-- This is where the google map shows up -->
+    <section class="u-clearfix u-grey-light-2 u-typography-custom-page-typography-12--Map u-section-2" id="sec-be10">
+      <div class="u-expanded u-grey-light-2 u-map">
+        <div class="embed-responsive" id = "stateMap"></div>
+      </div>
+      <div class="u-clearfix u-sheet u-sheet-1"></div>
+    </section>
+
+    <!--This is where pull down shows up-->
+    <div class="u-text u-text-2">
+        <label for="county">Choose a county here or click on the map:</label>&nbsp;&nbsp;
+        <select name="state" id="stateid" onchange="callMe();">
+          <option value="AL">Alabama</option>
+          <option value="AK">Alaska</option>
+          <option value="AZ">Arizona</option>
+          <option value="AR">Arkansas</option>
+          <option value="CA">California</option>
+          <option value="CO">Colorado</option>
+          <option value="CT">Connecticut</option>
+          <option value="DE">Delaware</option>
+          <option value="FL">Florida</option>
+          <option value="GA">Georgia</option>
+          <option value="HI">Hawaii</option>
+          <option value="ID">Idaho</option>
+          <option value="IL">Illinois</option>
+          <option value="IN">Indiana</option>
+          <option value="IA">Iowa</option>
+          <option value="KS">Kansas</option>
+          <option value="KY">Kentucky</option>
+          <option value="LA">Louisiana</option>
+          <option value="ME">Maine</option>
+          <option value="MD">Maryland</option>
+          <option value="MA">Massachusetts</option>
+          <option value="MI">Michigan</option>
+          <option value="MN">Minnesota</option>
+          <option value="MS">Mississippi</option>
+          <option value="MO">Missouri</option>
+          <option value="MT">Montana</option>
+          <option value="NE">Nebraska</option>
+          <option value="NV">Nevada</option>
+          <option value="NH">New Hampshire</option>
+          <option value="NJ">New Jersey</option>
+          <option value="NM">New Mexico</option>
+          <option value="NY">New York</option>
+          <option value="NC">North Carolina</option>
+          <option value="ND">North Dakota</option>
+          <option value="OH">Ohio</option>
+          <option value="OK">Oklahoma</option>
+          <option value="OR">Oregon</option>
+          <option value="PA">Pennsylvania</option>
+          <option value="RI">Rhode Island</option>
+          <option value="SC">South Carolina</option>
+          <option value="SD">South Dakota</option>
+          <option value="TN">Tennessee</option>
+	  <option value="TX">Texas</option>
+	  <option value="UT">Utah</option>
+	  <option value="VT">Vermont</option>
+	  <option value="VA">Virginia</option>
+	  <option value="WA">Washington</option>
+	  <option value="WV">West Virginia</option>
+	  <option value="WI">Wisconsin</option>
+	  <option value="WY">Wyoming</option>
+
+        </select>
+    </div>
+    <br>
+    
+    <i class="u-align-center u-valign-middle u-blog-control u-custom-font u-font-montserrat u-text u-text-2">
+        <span id = "stateTable"></span>
+        <br><br><br><br>
+        A snapshot of covid cases each state is as below. To see a different state click on the county in the below map or use the pull down.
+    </i>
+
+    <!-- This is where all the graphs and tables show up -->
+
+    <div id = "stateCase"></div>
+    <div id = "stateDeath"></div>
+    <div id = "stateTotalCase"></div>
+    <div id = "stateTotalDeath"></div>
+
+    <!-- All graphs complete by now. Proceed with footer -->
+
+    <!-- Footer message -->
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-8032">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">
+            Updated every day.
+	<br>
+	    Data provided for states by the CDC
+	<br>
+	    Centers for Disease Control and Prevention, COVID-19 Response. COVID-19 Case Surveillance Public Data Access, Summary, and Limitations
+        </p>
+        <span class="u-small-text u-text u-text-variant u-text-1">
+            Made by Vishnu Nair
+        </span>
+      </div>
+    </footer>
+    <!-- Footer done -->
+
+  </body>
+</html>

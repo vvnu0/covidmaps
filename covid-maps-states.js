@@ -54,45 +54,44 @@
 	    
 		stateJsonData.forEach(function(row) {
                     var stateName = getFullStateName(row['state']);
-                    if (row['state'].length == 2) {
-                       
-		    var newCase = parseInt(row['new_case']);
+                    var newCase = parseInt(row['new_case']);
 		    var deaths = parseInt(row['new_death']);
 		    var totalCase = parseInt(row['tot_cases']);
 		    var totalNumDeaths = parseInt(row['tot_death']);
-
+			
+		    if (stateName !== "") {
 	   
-		    var caseLine = []; 
-		    caseLine.push(stateName);
-		    caseLine.push(newCase<0?0:newCase);
-		    stateCaseData.push(caseLine);
+			    var caseLine = []; 
+			    caseLine.push(stateName);
+			    caseLine.push(newCase<0?0:newCase);
+			    stateCaseData.push(caseLine);
 		    
-		    var deathLine = [];
-		    deathLine.push(stateName);
-		    deathLine.push(deaths<0?0:deaths);
-		    stateDeathData.push(deathLine);
-			
-		    var totalCaseLine =[];
-       		    totalCaseLine.push(stateName);
-       		    totalCaseLine.push(totalCase<0?0:totalCase); 
-      		    stateTotalCaseData.push(totalCaseLine);
-			
-		    var lineDeathRow =[];
-       		    lineDeathRow.push(stateName);
-      		    lineDeathRow.push(totalNumDeaths<0?0:totalNumDeaths);
-      		    stateTotalDeathData.push(lineDeathRow);
-		    
-		    if (selectedState == row['state']) {
-			var tableRow = [];
-			tableRow.push(date)
-			tableRow.push(stateName)
-			tableRow.push(totalCase<0?0:totalCase);
-			tableRow.push(totalNumDeaths<0?0:totalNumDeaths);
-			tableRow.push(newCase<0?0:newCase);
-			tableRow.push(deaths<0?0:deaths);
-			stateTableData.push(tableRow);
-		     }
-                  }
+			    var deathLine = [];
+			    deathLine.push(stateName);
+			    deathLine.push(deaths<0?0:deaths);
+			    stateDeathData.push(deathLine);
+
+			    var totalCaseLine =[];
+			    totalCaseLine.push(stateName);
+			    totalCaseLine.push(totalCase<0?0:totalCase); 
+			    stateTotalCaseData.push(totalCaseLine);
+
+			    var lineDeathRow =[];
+			    lineDeathRow.push(stateName);
+			    lineDeathRow.push(totalNumDeaths<0?0:totalNumDeaths);
+			    stateTotalDeathData.push(lineDeathRow);
+
+			    if (selectedState == row['state']) {
+				var tableRow = [];
+				tableRow.push(date)
+				tableRow.push(stateName)
+				tableRow.push(totalCase<0?0:totalCase);
+				tableRow.push(totalNumDeaths<0?0:totalNumDeaths);
+				tableRow.push(newCase<0?0:newCase);
+				tableRow.push(deaths<0?0:deaths);
+				stateTableData.push(tableRow);
+			    }
+                      } 
 		});
 
 

@@ -11,7 +11,7 @@
 	    });
 	    stateMap.data.loadGeoJson('https://raw.githubusercontent.com/nairvishnumail/covidmaps/main/states.json');
 		
-            map.data.setStyle({
+            stateMap.data.setStyle({
               fillColor: 'green',
               strokeWeight: 1
             });

@@ -16,7 +16,7 @@
               strokeWeight: 1
             });
 		
-	    var stateinfowindow = new google.maps.InfoWindow();
+	    var stateInfoWindow = new google.maps.InfoWindow();
 
 	    stateMap.data.addListener('click', function(event) {
 		let states_code = event.feature.getProperty("STUSPS");
@@ -32,12 +32,12 @@
 		} while (mycases.length == 0);
 		    
 		let html = "State :" + state_name + "New Cases: " + mycases;
-		infowindow.setContent(html); // show the html variable in the infowindow
-		infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
-		infowindow.setOptions({
+		stateInfoWindow.setContent(html); // show the html variable in the infowindow
+		stateInfoWindow.setPosition(event.latLng); // anchor the infowindow at the marker
+		stateInfoWindow.setOptions({
 		    pixelOffset: new google.maps.Size(0, -30)
 		}); 
-		infowindow.open(stateMap);
+		stateInfoWindow.open(stateMap);
 	    })
         }
 

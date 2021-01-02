@@ -31,7 +31,7 @@
 		    mycases = getStateChartData(states_code, forDays);
 		} while (mycases.length == 0);
 		    
-		let html = "State: " + state_name + " Total Cases: " + mycases[0];
+		let html = "State: " + state_name + " Total Cases: " + mycases[0].tot_cases;
 		stateInfoWindow.setContent(html); // show the html variable in the infowindow
 		stateInfoWindow.setPosition(event.latLng); // anchor the infowindow at the marker
 		stateInfoWindow.setOptions({

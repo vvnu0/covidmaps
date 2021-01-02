@@ -20,11 +20,18 @@
 
 	    stateMap.data.addListener('click', function(event) {
 		let states_code = event.feature.getProperty("STUSPS");
-		let state_name = event.feature.getProperty("name");
+		let state_name = event.feature.getProperty("NAME");
 		selectedState = states_code;
 		drawChart();
-		let mycases = getStateChartData(states_code)
-		let html = "State :" + states_name + "New Cases: " + mycases;
+		    
+		var forDays = 0;
+		var mycases;
+		do {
+		    forDays = forDays+1;
+		    mycases = getStateChartData(states_code, forDays);
+		} while (mycases.length == 0);
+		    
+		let html = "State :" + state_name + "New Cases: " + mycases;
 		infowindow.setContent(html); // show the html variable in the infowindow
 		infowindow.setPosition(event.latLng); // anchor the infowindow at the marker
 		infowindow.setOptions({
@@ -47,9 +54,10 @@
 	    return currentDate.toISOString().split('T')[0];
 	}
 
-	function getStateChartData(stateCode) {
-	    var baseQuery = "https://data.cdc.gov/resource/9mfq-cb36.json?submission_date=" + getPastDate(1) + "T00:00:00.000";
+	function getStateChartData(stateCode, forDays) {
+            var baseQuery = "https://data.cdc.gov/resource/9mfq-cb36.json?submission_date=" + getPastDate(forDays) + "T00:00:00.000";
 	    var xmlhttp = new XMLHttpRequest();
+	    alert(statecode);
 	    if (stateCode && stateCode !== "") {
 		xmlhttp.open("GET", baseQuery+"&state="+stateCode, false);     
 	    } else {
@@ -59,20 +67,28 @@
 	    return JSON.parse(xmlhttp.responseText);
 	}
 	
-
-	function getChartData() {
-	    return getStateChartData('');
-	}
-	
 	function drawChart() {
-	    var stateJsonData= getChartData();
+	    var stateJsonData;
 	    var stateCaseData = [];
 	    var stateDeathData = [];
 	    var stateTotalCaseData = [];
 	    var stateTotalDeathData = [];
 	    var stateTableData = [];
+	    
+	    var forDays = 0;
 		
-	    var date = getPastDate(1);
+	    // There is a chance that last day data is empty, if yes look for previous day's data until we find some
+	    do {
+		forDays = forDays + 1;
+		stateJsonData = getStateChartData('',forDays)
+		if (forDays > 30 ) {
+		    console.log("No data available from source");
+		    return; //There should be some data in the last 30 days, else just dont do anything
+		}
+	    } while (stateJsonData.length == 0);
+		
+	    var date = getPastDate(forDays);
+	    
 	    	
 	    if (stateJsonData.length > 0) {
 		var stateTableColHead = ['Date', 'State', 'Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];

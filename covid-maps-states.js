@@ -57,7 +57,6 @@
 	function getStateChartData(stateCode, forDays) {
             var baseQuery = "https://data.cdc.gov/resource/9mfq-cb36.json?submission_date=" + getPastDate(forDays) + "T00:00:00.000";
 	    var xmlhttp = new XMLHttpRequest();
-	    alert(statecode);
 	    if (stateCode && stateCode !== "") {
 		xmlhttp.open("GET", baseQuery+"&state="+stateCode, false);     
 	    } else {

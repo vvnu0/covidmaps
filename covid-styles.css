@@ -33,7 +33,7 @@ body {
 }
 
 .topnav a {
-  float: right;
+  float: left;
   background-color: #333;
   color: #FFFFFF;
   text-align: center;

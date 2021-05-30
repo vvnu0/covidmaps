@@ -11,7 +11,8 @@
 	
 	function getChartData() {
 	    var xmlhttp = new XMLHttpRequest();
-	    var query = "https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='" + getPastDate(25) + "'"
+	    var query = "https://dataport.open.denodo.com/server/covid_19_data/rws_covid19_cases_detailed_country_level_information/views/covid19_usa_county_level_case_details?province=California&country_name=United+States+of+America&county="+ selectedCounty + "&$select=last_updated,country_name,county,confirmed,deaths,recovered&%24format=json"
+	    //https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='" + getPastDate(25) + "'"
 
 	    xmlhttp.open("GET", query, false);
 	    xmlhttp.send();
@@ -20,7 +21,8 @@
 	
 	function drawChart() {
 	    var myObj = getChartData();
-	    var jsonData = myObj.result.records;
+	    var jsonData = myObj.result.elements;
+	    //var jsonData = myObj.result.records;
 	    var caseChartData = [];
 	    var deathChartData = [];
 	    var lineCaseData = [];
@@ -30,27 +32,38 @@
 	    var tableDay = getPastDate(1);
 	    	
 	    if (jsonData.length > 0) {
-		var tableColHead = ['County', 'Date', 'Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
+		var tableColHead = ['confirmed', 'deaths', 'recovered', 'county', 'last_updated'];
+		//var tableColHead = ['County', 'Date', 'Total Confirmed Cases', 'Total Deaths', 'New Confirmed Cases', 'New Deaths'];
 		tableData.push(tableColHead);
-		    
-		var caseColHead = ['Date', 'New Confirmed'];
+		
+		var caseColHead = ['Date', 'Confirmed'];
+		//var caseColHead = ['Date', 'New Confirmed'];
 		caseChartData.push(caseColHead); 
-		 
-		var deathColHead = ['Date', 'New Deaths'];
+		
+		var deathColHead = ['Date', 'Deaths'];    
+		//var deathColHead = ['Date', 'New Deaths'];
 		deathChartData.push(deathColHead);
-		    
-		var lineCaseColHead = ['Date', 'Total Confirmed'];
+		
+		var lineCaseColHead = ['Date', 'Confirmed'];
+		//var lineCaseColHead = ['Date', 'Total Confirmed'];
    		lineCaseData.push(lineCaseColHead);
-		   
-		var lineDeathColHead = ['Date', 'Total Deaths'];
+		
+		var lineDeathColHead = ['Date', 'Deaths'];
+		//var lineDeathColHead = ['Date', 'Total Deaths'];
    		lineDeathData.push(lineDeathColHead);
 		    		    
 		jsonData.forEach(function(row) {
-		    var rowDate = row['date'].split('T')[0];
-		    var newConfirmed = parseInt(row['newcountconfirmed']);
-		    var newDeaths = parseInt(row['newcountdeaths']);
-		    var totalConfirmed = parseInt(row['totalcountconfirmed']);
-		    var totalDeaths = parseInt(row['totalcountdeaths']);
+		    var rowDate = row['last_updated'];
+		    //var rowDate = row['date'].split('T')[0];
+		    var newConfirmed = parseInt(row['confirmed']);
+		    var newDeaths = parseInt(row['deaths']);
+		    var recovered = parseInt(row['recovered']);
+		    //var totalDeaths = parseInt(row['totalcountdeaths']);
+			
+// 		    var newConfirmed = parseInt(row['newcountconfirmed']);
+// 		    var newDeaths = parseInt(row['newcountdeaths']);
+// 		    var totalConfirmed = parseInt(row['totalcountconfirmed']);
+// 		    var totalDeaths = parseInt(row['totalcountdeaths']);
 		   
 		    var caseChartRow = []; 
 		    caseChartRow.push(rowDate);
@@ -64,13 +77,18 @@
 			
 		    var lineCaseRow =[];
        		    lineCaseRow.push(rowDate);
-       		    lineCaseRow.push(totalConfirmed<0?0:totalConfirmed); 
+       		    lineCaseRow.push(recovered<0?0:recovered); 
       		    lineCaseData.push(lineCaseRow);
 			
-		    var lineDeathRow =[];
-       		    lineDeathRow.push(rowDate);
-      		    lineDeathRow.push(totalDeaths<0?0:totalDeaths);
-      		    lineDeathData.push(lineDeathRow);
+// 		    var lineCaseRow =[];
+//        		    lineCaseRow.push(rowDate);
+//        		    lineCaseRow.push(totalConfirmed<0?0:totalConfirmed); 
+//       		    lineCaseData.push(lineCaseRow);
+			
+// 		    var lineDeathRow =[];
+//        		    lineDeathRow.push(rowDate);
+//       		    lineDeathRow.push(totalDeaths<0?0:totalDeaths);
+//       		    lineDeathData.push(lineDeathRow);
 		    
 		    if (tableDay == rowDate) {   //table
 			var tableRow = [];

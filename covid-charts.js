@@ -11,7 +11,7 @@
 	
 	function getChartData() {
 	    var xmlhttp = new XMLHttpRequest();
-	    var query = "https://dataport.open.denodo.com/server/covid_19_data/rws_covid19_cases_detailed_country_level_information/views/covid19_usa_county_level_case_details?province=California&country_name=United+States+of+America&county="+ selectedCounty + "&$select=last_updated,country_name,county,confirmed,deaths,recovered&%24format=json"
+	    var query = 'https://dataport.open.denodo.com/server/covid_19_data/rws_covid19_cases_detailed_country_level_information/views/covid19_usa_county_level_case_details?province=California&country_name=United+States+of+America&county='+ selectedCounty + '&$select=last_updated,country_name,county,confirmed,deaths,recovered&format=json'
 	    //https://data.ca.gov/api/3/action/datastore_search_sql?sql=SELECT * from \"926fd08f-cc91-4828-af38-bd45de97f8c3\" WHERE \"county\" LIKE '" + selectedCounty + "' AND \"date\" >='" + getPastDate(25) + "'"
 
 	    xmlhttp.open("GET", query, false);

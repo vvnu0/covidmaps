@@ -94,11 +94,18 @@
 			var tableRow = [];
 			tableRow.push(selectedCounty);
 			tableRow.push(rowDate); 
-			tableRow.push(totalConfirmed<0?0:totalConfirmed);
-			tableRow.push(totalDeaths<0?0:totalDeaths);
 			tableRow.push(newConfirmed<0?0:newConfirmed);
 			tableRow.push(newDeaths<0?0:newDeaths);
+			tableRow.push(recovered<0?0:recovered);
 			tableData.push(tableRow);
+			    
+// 			tableRow.push(selectedCounty);
+// 			tableRow.push(rowDate); 
+// 			tableRow.push(totalConfirmed<0?0:totalConfirmed);
+// 			tableRow.push(totalDeaths<0?0:totalDeaths);
+// 			tableRow.push(newConfirmed<0?0:newConfirmed);
+// 			tableRow.push(newDeaths<0?0:newDeaths);
+// 			tableData.push(tableRow);
 		    }
 		});
 	    }
